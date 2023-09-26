@@ -88,16 +88,30 @@ public class MainActivity extends AppCompatActivity {
 
 public void createAccount(View v) throws ParseException, IOException {
     OkHttpClient client= new OkHttpClient();
-    String url= "https://be-androidth1.onrender.com/account/createAccount";
+    String name="";
+    String email="";
+    String password="";
+    String dateOfBirth="";
+    if(!edtName.getText().toString().trim().isEmpty()){
+       name =edtName.getText().toString().trim();
+    }
+    if(!edtEmail.getText().toString().trim().isEmpty()){
+        email=edtEmail.getText().toString().trim();
+    }
+    if(!edtPassword.getText().toString().trim().isEmpty()){
+        password=edtPassword.getText().toString().trim();
+    }
+    if(!editTextDate.getText().toString().trim().isEmpty()){
+       String dateOfBirth1= editTextDate.getText().toString();
 
-    String name=edtName.getText().toString().trim();
-    String email=edtEmail.getText().toString().trim();
-    String password=edtPassword.getText().toString().trim();
-    String dateOfBirth1= editTextDate.getText().toString();
-    Date date= new Date(dateOfBirth1);
-    date= getConvertedDate(date,"UTC");
+        Date date= new Date(dateOfBirth1);
+        date= getConvertedDate(date,"UTC");
 
-    String dateOfBirth=date.toString();
+        dateOfBirth=date.toString();
+    }
+
+
+
     Boolean gender;
     if(radioButtonNam.isChecked()){
         gender= true;
