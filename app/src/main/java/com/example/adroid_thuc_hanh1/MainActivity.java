@@ -3,7 +3,7 @@ package com.example.adroid_thuc_hanh1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-
+import android.widget.Toast;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Button;
@@ -20,6 +20,8 @@ import java.util.Date;
 import java.util.TimeZone;
 
 import  android.view.View;
+import android.widget.Toast;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
@@ -82,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 
 public void createAccount(View v) throws ParseException, IOException {
     OkHttpClient client= new OkHttpClient();
@@ -164,7 +167,6 @@ class PostToServer extends AsyncTask<String, Void,String>{
 
     @Override
     protected void onPostExecute(String s) {
-        Log.d("AAA",s);
         if(s.equals("Success")) {
             edtName.setText("");
             edtEmail.setText("");
@@ -173,6 +175,8 @@ class PostToServer extends AsyncTask<String, Void,String>{
             radioButtonNam.setChecked(false);
             radioButtonNu.setChecked(false);
         }
+        Toast.makeText(MainActivity.this,s, Toast.LENGTH_LONG).show();
+
         super.onPostExecute(s);
 
     }
